@@ -1,7 +1,7 @@
 public class CreditScore {
 
     public static int calculateScore(int income, int debts) {
-        if (income <= 0) return 0;
+        if (income <= 0) return 300;  // ✅ fixed
 
         int score = 700 + (income / 1000) - (debts / 500);
 
