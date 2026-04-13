@@ -1,22 +1,24 @@
-public class CreditScore {
+public class Library {
 
-    public static int calculateScore(int income, int debts) {
+    int totalBooks = 0;
+    int availableBooks = 0;
 
-        // ✅ Case 1: Negative income
-        if (income < 0) return 0;
-
-        // ✅ Case 2: Zero income
-        if (income == 0) return 300;
-
-        int score = 700 + (income / 1000) - (debts / 500);
-
-        if (score > 850) return 850;
-        if (score < 300) return 300;
-
-        return score;
+    public void addBook(int count) {
+        if (count > 0) {
+            totalBooks += count;
+            availableBooks += count;
+        }
     }
 
-    public static void main(String[] args) {
-        System.out.println("Credit Score System Running...");
+    public int lendBook(int count) {
+        if (count <= availableBooks) {
+            availableBooks -= count;
+            return availableBooks;
+        }
+        return -1; // not enough books
+    }
+
+    public int getAvailableBooks() {
+        return availableBooks;
     }
 }
